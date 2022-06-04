@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -84,6 +85,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Apa.ico" />
+    <None Include="Images\15_ball.png" />
+    <None Include="Images\14_ball.png" />
+    <None Include="Images\13_ball.png" />
+    <None Include="Images\12_ball.png" />
+    <None Include="Images\11_ball.png" />
+    <None Include="Images\10_ball.png" />
+    <None Include="Images\9_ball.png" />
+    <None Include="Images\8_ball.png" />
+    <None Include="Images\7_ball.png" />
+    <None Include="Images\6_ball.png" />
+    <None Include="Images\5_ball.png" />
+    <None Include="Images\4_ball.png" />
+    <None Include="Images\3_ball.png" />
+    <None Include="Images\2_ball.png" />
+    <None Include="Images\1_ball.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
