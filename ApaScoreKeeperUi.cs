@@ -38,7 +38,7 @@ namespace ApaScoreKeeper
         private void ApaScoreKeeperUiLoad(object sender, EventArgs e)
         {
             InitFiles();
-            LoadTextBoxes();
+            LoadFiles();
             ResetScores();
 
             poolBalls.Add(pbx1Ball);
@@ -155,7 +155,7 @@ namespace ApaScoreKeeper
         /// <summary>
         /// Loads textboxes with data from files
         /// </summary>
-        private void LoadTextBoxes()
+        private void LoadFiles()
         {
             if (File.Exists(PLAYER_1_NAME))
             {
@@ -182,9 +182,16 @@ namespace ApaScoreKeeper
         private void ResetScores()
         {
             numUpDwnPlayer1Score.Value = 0;
+            SaveNumUpDwnValueToFile(numUpDwnPlayer1Score);
+
             numUpDwnPlayer2Score.Value = 0;
+            SaveNumUpDwnValueToFile(numUpDwnPlayer2Score);
+
             numUpDwnInnings.Value = 0;
+            SaveNumUpDwnValueToFile(numUpDwnInnings);
+
             numUpDwnDeadBalls.Value = 0;
+            SaveNumUpDwnValueToFile(numUpDwnDeadBalls);
         }
 
         /// <summary>
