@@ -65,7 +65,7 @@ namespace ApaScoreKeeper
         /// <param name="e"></param>
         private void TextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(sender is TextBox textBox) || e.KeyChar == (char)Keys.Enter)
+            if (!(sender is TextBox textBox) || e.KeyChar != (char)Keys.Enter)
                 return;
 
             SaveTextBoxTextToFile(textBox);
