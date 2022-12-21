@@ -135,7 +135,13 @@ namespace ApaScoreKeeper
         /// <param name="e"></param>
         private void BtnResetScoresClick(object sender, EventArgs e)
         {
-            ResetScores();
+            using (new CenterWinDialog(this))
+            {
+                if (MessageBox.Show("Are you sure you want to reset scores?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    return;
+
+                ResetScores();
+            }
         }   
 
         /// <summary>

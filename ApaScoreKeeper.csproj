@@ -55,6 +55,7 @@
     <Compile Include="ApaScoreKeeperUi.Designer.cs">
       <DependentUpon>ApaScoreKeeperUi.cs</DependentUpon>
     </Compile>
+    <Compile Include="CenterWinDialog.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ApaScoreKeeperUi.resx">
