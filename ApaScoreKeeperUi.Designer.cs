@@ -146,8 +146,7 @@
             this.txtPlayer1Name.Size = new System.Drawing.Size(255, 20);
             this.txtPlayer1Name.TabIndex = 1;
             this.txtPlayer1Name.Tag = "";
-            this.txtPlayer1Name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxKeyPress);
-            this.txtPlayer1Name.Leave += new System.EventHandler(this.TextBoxLeave);
+            this.txtPlayer1Name.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
             // lblPlayer1Name
             // 
@@ -203,8 +202,7 @@
             this.txtPlayer2Name.Size = new System.Drawing.Size(215, 20);
             this.txtPlayer2Name.TabIndex = 1;
             this.txtPlayer2Name.Tag = "";
-            this.txtPlayer2Name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxKeyPress);
-            this.txtPlayer2Name.Leave += new System.EventHandler(this.TextBoxLeave);
+            this.txtPlayer2Name.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
             // lblPlayer2Name
             // 
@@ -231,8 +229,7 @@
             this.txtRace.Name = "txtRace";
             this.txtRace.Size = new System.Drawing.Size(521, 20);
             this.txtRace.TabIndex = 6;
-            this.txtRace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxKeyPress);
-            this.txtRace.Leave += new System.EventHandler(this.TextBoxLeave);
+            this.txtRace.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
             // lblInnings
             // 

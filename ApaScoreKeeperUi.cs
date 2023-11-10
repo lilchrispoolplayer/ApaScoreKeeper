@@ -16,6 +16,7 @@ namespace ApaScoreKeeper
         private const string DEAD_BALLS = "DeadBalls.txt";
 
         private List<PictureBox> poolBalls = new List<PictureBox>();
+        private bool loadingFiles;
 
         public ApaScoreKeeperUi()
         {
@@ -58,20 +59,7 @@ namespace ApaScoreKeeper
             poolBalls.Add(pbx15Ball);
         }
 
-        /// <summary>
-        /// Writes player's name to file
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBoxKeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!(sender is TextBox textBox) || e.KeyChar != (char)Keys.Enter)
-                return;
-
-            SaveTextBoxTextToFile(textBox);
-        }
-
-        private void TextBoxLeave(object sender, EventArgs e)
+        private void TextBoxTextChanged(object sender, EventArgs e)
         {
             if (!(sender is TextBox textBox))
                 return;
@@ -163,6 +151,7 @@ namespace ApaScoreKeeper
         /// </summary>
         private void LoadFiles()
         {
+            loadingFiles = true;
             if (File.Exists(PLAYER_1_NAME))
             {
                 using (StreamReader reader = new StreamReader(PLAYER_1_NAME))
@@ -180,6 +169,7 @@ namespace ApaScoreKeeper
                 using (StreamReader reader = new StreamReader(RACE))
                     txtRace.Text = reader.ReadLine();
             }
+            loadingFiles = false;
         }
 
         /// <summary>
@@ -206,6 +196,9 @@ namespace ApaScoreKeeper
         /// <param name="textBox"></param>
         private void SaveTextBoxTextToFile(TextBox textBox)
         {
+            if (loadingFiles)
+                return;
+
             using (StreamWriter writer = new StreamWriter(textBox.Tag.ToString()))
             {
                 writer.Write(textBox.Text);
