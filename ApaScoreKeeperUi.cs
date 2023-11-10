@@ -18,6 +18,9 @@ namespace ApaScoreKeeper
         private List<PictureBox> poolBalls = new List<PictureBox>();
         private bool loadingFiles;
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public ApaScoreKeeperUi()
         {
             InitializeComponent();
@@ -59,6 +62,11 @@ namespace ApaScoreKeeper
             poolBalls.Add(pbx15Ball);
         }
 
+        /// <summary>
+        /// Saves the changed text to its appropriate file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBoxTextChanged(object sender, EventArgs e)
         {
             if (!(sender is TextBox textBox))
@@ -68,7 +76,7 @@ namespace ApaScoreKeeper
         }
 
         /// <summary>
-        /// Writes player 1's score to file
+        /// Writes player's score to file
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -76,6 +84,7 @@ namespace ApaScoreKeeper
         {
             if (!(sender is NumericUpDown numUpDwn))
                 return;
+
             SaveNumUpDwnValueToFile(numUpDwn);
         }
 
