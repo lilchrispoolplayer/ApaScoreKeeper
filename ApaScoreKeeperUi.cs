@@ -7,14 +7,6 @@ namespace ApaScoreKeeper
 {
     public partial class ApaScoreKeeperUi : Form
     {
-        private const string PLAYER_1_NAME = "Player1Name.txt";
-        private const string PLAYER_1_SCORE = "Player1Score.txt";
-        private const string PLAYER_2_NAME = "Player2Name.txt";
-        private const string PLAYER_2_SCORE = "Player2Score.txt";
-        private const string RACE = "Race.txt";
-        private const string INNINGS = "Innings.txt";
-        private const string DEAD_BALLS = "DeadBalls.txt";
-
         private List<PictureBox> poolBalls = new List<PictureBox>();
         private bool loadingFiles;
 
@@ -25,13 +17,17 @@ namespace ApaScoreKeeper
         {
             InitializeComponent();
 
-            txtPlayer1Name.Tag = PLAYER_1_NAME;
-            numUpDwnPlayer1Score.Tag = PLAYER_1_SCORE;
-            txtPlayer2Name.Tag = PLAYER_2_NAME;
-            numUpDwnPlayer2Score.Tag = PLAYER_2_SCORE;
-            txtRace.Tag = RACE;
-            numUpDwnInnings.Tag = INNINGS;
-            numUpDwnDeadBalls.Tag = DEAD_BALLS;            
+            rad8Ball.Tag = Constants.EIGHT_BALL;
+            rad9Ball.Tag = Constants.NINE_BALL;
+            txtPlayer1Name.Tag = Constants.PLAYER_1_NAME;
+            cbxPlayer1SkillLevel.Tag = Constants.PLAYER_1_SKILL_LEVEL;
+            numUpDwnPlayer1Score.Tag = Constants.PLAYER_1_SCORE;
+            txtPlayer2Name.Tag = Constants.PLAYER_2_NAME;
+            cbxPlayer2SkillLevel.Tag = Constants.PLAYER_2_SKILL_LEVEL;
+            numUpDwnPlayer2Score.Tag = Constants.PLAYER_2_SCORE;
+            txtRace.Tag = Constants.RACE;
+            numUpDwnInnings.Tag = Constants.INNINGS;
+            numUpDwnDeadBalls.Tag = Constants.DEAD_BALLS;            
         }
 
         /// <summary>
@@ -63,6 +59,34 @@ namespace ApaScoreKeeper
         }
 
         /// <summary>
+        /// Sets the possible skill levels to select for a player in 8-ball
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Rad8BallCheckedChanged(object sender, EventArgs e)
+        {
+            if (!rad8Ball.Checked)
+                return;
+
+            AdjustPlayerSkillLevels(Constants.EIGHT_BALL_SKILL_LEVELS);
+            SaveGameType(rad8Ball);
+        }
+
+        /// <summary>
+        /// Sets the possible skill levels to select for a player in 9-ball
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Rad9BallCheckedChanged(object sender, EventArgs e)
+        {
+            if (!rad9Ball.Checked)
+                return;
+
+            AdjustPlayerSkillLevels(Constants.NINE_BALL_SKILL_LEVELS);
+            SaveGameType(rad9Ball);
+        }
+
+        /// <summary>
         /// Saves the changed text to its appropriate file
         /// </summary>
         /// <param name="sender"></param>
@@ -73,6 +97,34 @@ namespace ApaScoreKeeper
                 return;
 
             SaveTextBoxTextToFile(textBox);
+        }
+
+        /// <summary>
+        /// Sets the race of the match based on the players' skill levels
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbxPlayerSkillLevelSelectedIndexChanged(object sender, EventArgs e)
+        {
+            SavePlayerSkillLevelToFile(sender as ComboBox);
+            if (rad8Ball.Checked)
+            {
+                if ((cbxPlayer1SkillLevel.SelectedIndex < 0 || 5 < cbxPlayer1SkillLevel.SelectedIndex) ||
+                    (cbxPlayer2SkillLevel.SelectedIndex < 0 || 5 < cbxPlayer2SkillLevel.SelectedIndex))
+                    return;
+
+                string race = Constants.EIGHT_BALL_GAMES[cbxPlayer1SkillLevel.SelectedIndex, cbxPlayer2SkillLevel.SelectedIndex];
+                string[] playerGames = race.Split('/');
+                txtRace.Text = string.Format("{0} - Race - {1}", playerGames[0], playerGames[1]);
+            }
+            else
+            {
+                if ((cbxPlayer1SkillLevel.SelectedIndex < 0 || Constants.NINE_BALL_GAMES.Length < cbxPlayer1SkillLevel.SelectedIndex) ||
+                    (cbxPlayer2SkillLevel.SelectedIndex < 0 || Constants.NINE_BALL_GAMES.Length < cbxPlayer2SkillLevel.SelectedIndex))
+                    return;
+
+                txtRace.Text = string.Format("{0} - Race - {1}", Constants.NINE_BALL_GAMES[cbxPlayer1SkillLevel.SelectedIndex], Constants.NINE_BALL_GAMES[cbxPlayer2SkillLevel.SelectedIndex]);
+            }
         }
 
         /// <summary>
@@ -146,13 +198,16 @@ namespace ApaScoreKeeper
         /// </summary>
         private void InitFiles()
         {
-            if (!File.Exists(PLAYER_1_NAME)) File.Create(PLAYER_1_NAME).Close();
-            if (!File.Exists(PLAYER_1_SCORE)) File.Create(PLAYER_1_SCORE).Close();
-            if (!File.Exists(PLAYER_2_NAME)) File.Create(PLAYER_2_NAME).Close();
-            if (!File.Exists(PLAYER_2_SCORE)) File.Create(PLAYER_2_SCORE).Close();
-            if (!File.Exists(RACE)) File.Create(RACE).Close();
-            if (!File.Exists(INNINGS)) File.Create(INNINGS).Close();
-            if (!File.Exists(DEAD_BALLS)) File.Create(DEAD_BALLS).Close();
+            if (!File.Exists(Constants.GAME_TYPE)) File.Create(Constants.GAME_TYPE).Close();
+            if (!File.Exists(Constants.PLAYER_1_NAME)) File.Create(Constants.PLAYER_1_NAME).Close();
+            if (!File.Exists(Constants.PLAYER_1_SKILL_LEVEL)) File.Create(Constants.PLAYER_1_SKILL_LEVEL).Close();
+            if (!File.Exists(Constants.PLAYER_1_SCORE)) File.Create(Constants.PLAYER_1_SCORE).Close();
+            if (!File.Exists(Constants.PLAYER_2_NAME)) File.Create(Constants.PLAYER_2_NAME).Close();
+            if (!File.Exists(Constants.PLAYER_2_SKILL_LEVEL)) File.Create(Constants.PLAYER_2_SKILL_LEVEL).Close();
+            if (!File.Exists(Constants.PLAYER_2_SCORE)) File.Create(Constants.PLAYER_2_SCORE).Close();
+            if (!File.Exists(Constants.RACE)) File.Create(Constants.RACE).Close();
+            if (!File.Exists(Constants.INNINGS)) File.Create(Constants.INNINGS).Close();
+            if (!File.Exists(Constants.DEAD_BALLS)) File.Create(Constants.DEAD_BALLS).Close();
         }
 
         /// <summary>
@@ -161,24 +216,84 @@ namespace ApaScoreKeeper
         private void LoadFiles()
         {
             loadingFiles = true;
-            if (File.Exists(PLAYER_1_NAME))
+            if (File.Exists(Constants.GAME_TYPE))
             {
-                using (StreamReader reader = new StreamReader(PLAYER_1_NAME))
+                String gameType = "";
+                using (StreamReader reader = new StreamReader(Constants.GAME_TYPE))
+                    gameType = reader.ReadLine();
+
+                if (gameType == rad8Ball.Tag.ToString() || gameType == null)
+                    rad8Ball.Checked = true;
+                else rad9Ball.Checked = true;
+            }
+
+            if (File.Exists(Constants.PLAYER_1_NAME))
+            {
+                using (StreamReader reader = new StreamReader(Constants.PLAYER_1_NAME))
                     txtPlayer1Name.Text = reader.ReadLine();
             }
 
-            if (File.Exists(PLAYER_2_NAME))
+            if (File.Exists(Constants.PLAYER_1_SKILL_LEVEL))
             {
-                using (StreamReader reader = new StreamReader(PLAYER_2_NAME))
+                using (StreamReader reader = new StreamReader(Constants.PLAYER_1_SKILL_LEVEL))
+                {
+                    int skillLevel = Convert.ToInt32(reader.ReadLine());
+                    cbxPlayer1SkillLevel.SelectedIndex = cbxPlayer1SkillLevel.Items.IndexOf(skillLevel);
+                }
+            }
+
+            if (File.Exists(Constants.PLAYER_2_NAME))
+            {
+                using (StreamReader reader = new StreamReader(Constants.PLAYER_2_NAME))
                     txtPlayer2Name.Text = reader.ReadLine();
             }
 
-            if (File.Exists(RACE))
+            if (File.Exists(Constants.PLAYER_2_SKILL_LEVEL))
             {
-                using (StreamReader reader = new StreamReader(RACE))
+                using (StreamReader reader = new StreamReader(Constants.PLAYER_2_SKILL_LEVEL))
+                {
+                    int skillLevel = Convert.ToInt32(reader.ReadLine());
+                    cbxPlayer2SkillLevel.SelectedIndex = cbxPlayer2SkillLevel.Items.IndexOf(skillLevel);
+                }
+            }
+
+            if (File.Exists(Constants.RACE))
+            {
+                using (StreamReader reader = new StreamReader(Constants.RACE))
                     txtRace.Text = reader.ReadLine();
             }
             loadingFiles = false;
+        }
+
+        /// <summary>
+        /// Automatically adjusts the skill levels from 9-ball to 8-ball
+        /// </summary>
+        /// <param name="skillLevels"></param>
+        private void AdjustPlayerSkillLevels(int[] skillLevels)
+        {
+            int player1SkillLevel = 0;
+            if (cbxPlayer1SkillLevel.SelectedIndex != -1)
+                player1SkillLevel = Convert.ToInt32(cbxPlayer1SkillLevel.Items[cbxPlayer1SkillLevel.SelectedIndex]);
+            cbxPlayer1SkillLevel.Items.Clear();
+            foreach (int skillLevel in skillLevels)
+                cbxPlayer1SkillLevel.Items.Add(skillLevel);
+            if (player1SkillLevel < skillLevels[0])
+                cbxPlayer1SkillLevel.SelectedIndex = 0;
+            else if (player1SkillLevel > skillLevels[skillLevels.Length - 1])
+                cbxPlayer1SkillLevel.SelectedIndex = skillLevels.Length - 1;
+            else cbxPlayer1SkillLevel.SelectedIndex = cbxPlayer1SkillLevel.Items.IndexOf(player1SkillLevel);
+            
+            int player2SkillLevel = 0;
+            if (cbxPlayer2SkillLevel.SelectedIndex != -1)
+                player2SkillLevel = Convert.ToInt32(cbxPlayer2SkillLevel.Items[cbxPlayer2SkillLevel.SelectedIndex]);
+            cbxPlayer2SkillLevel.Items.Clear();
+            foreach (int skillLevel in skillLevels)
+                cbxPlayer2SkillLevel.Items.Add(skillLevel);
+            if (player2SkillLevel < skillLevels[0])
+                cbxPlayer2SkillLevel.SelectedIndex = 0;
+            else if (player2SkillLevel > skillLevels[skillLevels.Length - 1])
+                cbxPlayer2SkillLevel.SelectedIndex = skillLevels.Length - 1;
+            else cbxPlayer2SkillLevel.SelectedIndex = cbxPlayer2SkillLevel.Items.IndexOf(player2SkillLevel);
         }
 
         /// <summary>
@@ -200,6 +315,21 @@ namespace ApaScoreKeeper
         }
 
         /// <summary>
+        /// Saves the game type that is selected
+        /// </summary>
+        /// <param name="radioButton"></param>
+        private void SaveGameType(RadioButton radioButton)
+        {
+            if (loadingFiles)
+                return;
+
+            using (StreamWriter writer = new StreamWriter(Constants.GAME_TYPE))
+            {
+                writer.Write(radioButton.Tag.ToString());
+            }
+        }
+
+        /// <summary>
         /// Saves a textbox's text to file
         /// </summary>
         /// <param name="textBox"></param>
@@ -215,11 +345,29 @@ namespace ApaScoreKeeper
         }
 
         /// <summary>
+        /// Saves the selected index of the player's skill level to a file
+        /// </summary>
+        /// <param name="comboBox"></param>
+        private void SavePlayerSkillLevelToFile(ComboBox comboBox)
+        {
+            if (loadingFiles)
+                return;
+
+            using (StreamWriter writer = new StreamWriter(comboBox.Tag.ToString()))
+            {
+                writer.Write(comboBox.Items[comboBox.SelectedIndex]);
+            }
+        }
+
+        /// <summary>
         /// Save a NumericUpDown's value to file
         /// </summary>
         /// <param name="numUpDwn"></param>
         private void SaveNumUpDwnValueToFile(NumericUpDown numUpDwn)
         {
+            if (loadingFiles)
+                return;
+
             using (StreamWriter writer = new StreamWriter(numUpDwn.Tag.ToString()))
             {
                 writer.Write(numUpDwn.Value);

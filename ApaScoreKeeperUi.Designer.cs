@@ -30,11 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApaScoreKeeperUi));
             this.gbxPlayer1 = new System.Windows.Forms.GroupBox();
+            this.cbxPlayer1SkillLevel = new System.Windows.Forms.ComboBox();
+            this.lblPlayer1SkillLevel = new System.Windows.Forms.Label();
             this.lblPlayer1Score = new System.Windows.Forms.Label();
             this.numUpDwnPlayer1Score = new System.Windows.Forms.NumericUpDown();
             this.txtPlayer1Name = new System.Windows.Forms.TextBox();
             this.lblPlayer1Name = new System.Windows.Forms.Label();
             this.gbxPlayer2 = new System.Windows.Forms.GroupBox();
+            this.cbxPlayer2SkillLevel = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblPlayer2Score = new System.Windows.Forms.Label();
             this.numUpDwnPlayer2Score = new System.Windows.Forms.NumericUpDown();
             this.txtPlayer2Name = new System.Windows.Forms.TextBox();
@@ -78,6 +82,8 @@
             this.pbx7Ball = new System.Windows.Forms.PictureBox();
             this.pbx9Ball = new System.Windows.Forms.PictureBox();
             this.pbx8Ball = new System.Windows.Forms.PictureBox();
+            this.rad8Ball = new System.Windows.Forms.RadioButton();
+            this.rad9Ball = new System.Windows.Forms.RadioButton();
             this.gbxPlayer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDwnPlayer1Score)).BeginInit();
             this.gbxPlayer2.SuspendLayout();
@@ -104,16 +110,36 @@
             // 
             // gbxPlayer1
             // 
+            this.gbxPlayer1.Controls.Add(this.cbxPlayer1SkillLevel);
+            this.gbxPlayer1.Controls.Add(this.lblPlayer1SkillLevel);
             this.gbxPlayer1.Controls.Add(this.lblPlayer1Score);
             this.gbxPlayer1.Controls.Add(this.numUpDwnPlayer1Score);
             this.gbxPlayer1.Controls.Add(this.txtPlayer1Name);
             this.gbxPlayer1.Controls.Add(this.lblPlayer1Name);
-            this.gbxPlayer1.Location = new System.Drawing.Point(12, 12);
+            this.gbxPlayer1.Location = new System.Drawing.Point(10, 35);
             this.gbxPlayer1.Name = "gbxPlayer1";
-            this.gbxPlayer1.Size = new System.Drawing.Size(311, 100);
-            this.gbxPlayer1.TabIndex = 0;
+            this.gbxPlayer1.Size = new System.Drawing.Size(291, 100);
+            this.gbxPlayer1.TabIndex = 2;
             this.gbxPlayer1.TabStop = false;
             this.gbxPlayer1.Text = "Player 1";
+            // 
+            // cbxPlayer1SkillLevel
+            // 
+            this.cbxPlayer1SkillLevel.FormattingEnabled = true;
+            this.cbxPlayer1SkillLevel.Location = new System.Drawing.Point(208, 18);
+            this.cbxPlayer1SkillLevel.Name = "cbxPlayer1SkillLevel";
+            this.cbxPlayer1SkillLevel.Size = new System.Drawing.Size(77, 21);
+            this.cbxPlayer1SkillLevel.TabIndex = 3;
+            this.cbxPlayer1SkillLevel.SelectedIndexChanged += new System.EventHandler(this.CbxPlayerSkillLevelSelectedIndexChanged);
+            // 
+            // lblPlayer1SkillLevel
+            // 
+            this.lblPlayer1SkillLevel.AutoSize = true;
+            this.lblPlayer1SkillLevel.Location = new System.Drawing.Point(144, 21);
+            this.lblPlayer1SkillLevel.Name = "lblPlayer1SkillLevel";
+            this.lblPlayer1SkillLevel.Size = new System.Drawing.Size(58, 13);
+            this.lblPlayer1SkillLevel.TabIndex = 2;
+            this.lblPlayer1SkillLevel.Text = "Skill Level:";
             // 
             // lblPlayer1Score
             // 
@@ -121,7 +147,7 @@
             this.lblPlayer1Score.Location = new System.Drawing.Point(6, 62);
             this.lblPlayer1Score.Name = "lblPlayer1Score";
             this.lblPlayer1Score.Size = new System.Drawing.Size(38, 13);
-            this.lblPlayer1Score.TabIndex = 3;
+            this.lblPlayer1Score.TabIndex = 4;
             this.lblPlayer1Score.Text = "Score:";
             // 
             // numUpDwnPlayer1Score
@@ -132,8 +158,8 @@
             this.numUpDwnPlayer1Score.Location = new System.Drawing.Point(50, 44);
             this.numUpDwnPlayer1Score.Name = "numUpDwnPlayer1Score";
             this.numUpDwnPlayer1Score.ReadOnly = true;
-            this.numUpDwnPlayer1Score.Size = new System.Drawing.Size(255, 47);
-            this.numUpDwnPlayer1Score.TabIndex = 2;
+            this.numUpDwnPlayer1Score.Size = new System.Drawing.Size(235, 47);
+            this.numUpDwnPlayer1Score.TabIndex = 5;
             this.numUpDwnPlayer1Score.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numUpDwnPlayer1Score.ValueChanged += new System.EventHandler(this.NumUpDwnValueChanged);
             // 
@@ -143,7 +169,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPlayer1Name.Location = new System.Drawing.Point(50, 18);
             this.txtPlayer1Name.Name = "txtPlayer1Name";
-            this.txtPlayer1Name.Size = new System.Drawing.Size(255, 20);
+            this.txtPlayer1Name.Size = new System.Drawing.Size(88, 20);
             this.txtPlayer1Name.TabIndex = 1;
             this.txtPlayer1Name.Tag = "";
             this.txtPlayer1Name.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
@@ -160,16 +186,36 @@
             // 
             // gbxPlayer2
             // 
+            this.gbxPlayer2.Controls.Add(this.cbxPlayer2SkillLevel);
+            this.gbxPlayer2.Controls.Add(this.label2);
             this.gbxPlayer2.Controls.Add(this.lblPlayer2Score);
             this.gbxPlayer2.Controls.Add(this.numUpDwnPlayer2Score);
             this.gbxPlayer2.Controls.Add(this.txtPlayer2Name);
             this.gbxPlayer2.Controls.Add(this.lblPlayer2Name);
-            this.gbxPlayer2.Location = new System.Drawing.Point(329, 12);
+            this.gbxPlayer2.Location = new System.Drawing.Point(307, 35);
             this.gbxPlayer2.Name = "gbxPlayer2";
-            this.gbxPlayer2.Size = new System.Drawing.Size(271, 100);
-            this.gbxPlayer2.TabIndex = 4;
+            this.gbxPlayer2.Size = new System.Drawing.Size(291, 100);
+            this.gbxPlayer2.TabIndex = 3;
             this.gbxPlayer2.TabStop = false;
             this.gbxPlayer2.Text = "Player 2";
+            // 
+            // cbxPlayer2SkillLevel
+            // 
+            this.cbxPlayer2SkillLevel.FormattingEnabled = true;
+            this.cbxPlayer2SkillLevel.Location = new System.Drawing.Point(208, 18);
+            this.cbxPlayer2SkillLevel.Name = "cbxPlayer2SkillLevel";
+            this.cbxPlayer2SkillLevel.Size = new System.Drawing.Size(77, 21);
+            this.cbxPlayer2SkillLevel.TabIndex = 3;
+            this.cbxPlayer2SkillLevel.SelectedIndexChanged += new System.EventHandler(this.CbxPlayerSkillLevelSelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(144, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Skill Level:";
             // 
             // lblPlayer2Score
             // 
@@ -188,8 +234,8 @@
             this.numUpDwnPlayer2Score.Location = new System.Drawing.Point(50, 44);
             this.numUpDwnPlayer2Score.Name = "numUpDwnPlayer2Score";
             this.numUpDwnPlayer2Score.ReadOnly = true;
-            this.numUpDwnPlayer2Score.Size = new System.Drawing.Size(215, 47);
-            this.numUpDwnPlayer2Score.TabIndex = 2;
+            this.numUpDwnPlayer2Score.Size = new System.Drawing.Size(235, 47);
+            this.numUpDwnPlayer2Score.TabIndex = 4;
             this.numUpDwnPlayer2Score.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numUpDwnPlayer2Score.ValueChanged += new System.EventHandler(this.NumUpDwnValueChanged);
             // 
@@ -199,7 +245,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPlayer2Name.Location = new System.Drawing.Point(50, 18);
             this.txtPlayer2Name.Name = "txtPlayer2Name";
-            this.txtPlayer2Name.Size = new System.Drawing.Size(215, 20);
+            this.txtPlayer2Name.Size = new System.Drawing.Size(88, 20);
             this.txtPlayer2Name.TabIndex = 1;
             this.txtPlayer2Name.Tag = "";
             this.txtPlayer2Name.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
@@ -217,63 +263,63 @@
             // lblRace
             // 
             this.lblRace.AutoSize = true;
-            this.lblRace.Location = new System.Drawing.Point(37, 121);
+            this.lblRace.Location = new System.Drawing.Point(35, 144);
             this.lblRace.Name = "lblRace";
             this.lblRace.Size = new System.Drawing.Size(36, 13);
-            this.lblRace.TabIndex = 5;
+            this.lblRace.TabIndex = 4;
             this.lblRace.Text = "Race:";
             // 
             // txtRace
             // 
-            this.txtRace.Location = new System.Drawing.Point(79, 118);
+            this.txtRace.Location = new System.Drawing.Point(77, 141);
             this.txtRace.Name = "txtRace";
             this.txtRace.Size = new System.Drawing.Size(521, 20);
-            this.txtRace.TabIndex = 6;
+            this.txtRace.TabIndex = 5;
             this.txtRace.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
             // lblInnings
             // 
             this.lblInnings.AutoSize = true;
-            this.lblInnings.Location = new System.Drawing.Point(29, 161);
+            this.lblInnings.Location = new System.Drawing.Point(27, 184);
             this.lblInnings.Name = "lblInnings";
             this.lblInnings.Size = new System.Drawing.Size(44, 13);
-            this.lblInnings.TabIndex = 7;
+            this.lblInnings.TabIndex = 6;
             this.lblInnings.Text = "Innings:";
             // 
             // numUpDwnInnings
             // 
             this.numUpDwnInnings.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUpDwnInnings.Location = new System.Drawing.Point(79, 144);
+            this.numUpDwnInnings.Location = new System.Drawing.Point(77, 167);
             this.numUpDwnInnings.Name = "numUpDwnInnings";
             this.numUpDwnInnings.ReadOnly = true;
             this.numUpDwnInnings.Size = new System.Drawing.Size(521, 47);
-            this.numUpDwnInnings.TabIndex = 8;
+            this.numUpDwnInnings.TabIndex = 7;
             this.numUpDwnInnings.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numUpDwnInnings.ValueChanged += new System.EventHandler(this.NumUpDwnValueChanged);
             // 
             // numUpDwnDeadBalls
             // 
             this.numUpDwnDeadBalls.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUpDwnDeadBalls.Location = new System.Drawing.Point(79, 197);
+            this.numUpDwnDeadBalls.Location = new System.Drawing.Point(77, 220);
             this.numUpDwnDeadBalls.Name = "numUpDwnDeadBalls";
             this.numUpDwnDeadBalls.ReadOnly = true;
             this.numUpDwnDeadBalls.Size = new System.Drawing.Size(521, 47);
-            this.numUpDwnDeadBalls.TabIndex = 10;
+            this.numUpDwnDeadBalls.TabIndex = 9;
             this.numUpDwnDeadBalls.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numUpDwnDeadBalls.ValueChanged += new System.EventHandler(this.NumUpDwnValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 212);
+            this.label1.Location = new System.Drawing.Point(10, 235);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 8;
             this.label1.Text = "Dead Balls:";
             // 
             // btnResetScores
             // 
-            this.btnResetScores.Location = new System.Drawing.Point(15, 380);
+            this.btnResetScores.Location = new System.Drawing.Point(13, 403);
             this.btnResetScores.Name = "btnResetScores";
             this.btnResetScores.Size = new System.Drawing.Size(588, 23);
             this.btnResetScores.TabIndex = 11;
@@ -315,10 +361,10 @@
             this.gbxBalls.Controls.Add(this.pbx7Ball);
             this.gbxBalls.Controls.Add(this.pbx9Ball);
             this.gbxBalls.Controls.Add(this.pbx8Ball);
-            this.gbxBalls.Location = new System.Drawing.Point(15, 250);
+            this.gbxBalls.Location = new System.Drawing.Point(13, 273);
             this.gbxBalls.Name = "gbxBalls";
             this.gbxBalls.Size = new System.Drawing.Size(585, 124);
-            this.gbxBalls.TabIndex = 27;
+            this.gbxBalls.TabIndex = 10;
             this.gbxBalls.TabStop = false;
             this.gbxBalls.Text = "Balls";
             // 
@@ -330,7 +376,7 @@
             this.chk15Ball.Location = new System.Drawing.Point(552, 72);
             this.chk15Ball.Name = "chk15Ball";
             this.chk15Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk15Ball.TabIndex = 42;
+            this.chk15Ball.TabIndex = 14;
             this.chk15Ball.Tag = "15";
             this.chk15Ball.UseVisualStyleBackColor = true;
             this.chk15Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -343,7 +389,7 @@
             this.chk14Ball.Location = new System.Drawing.Point(514, 72);
             this.chk14Ball.Name = "chk14Ball";
             this.chk14Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk14Ball.TabIndex = 41;
+            this.chk14Ball.TabIndex = 13;
             this.chk14Ball.Tag = "14";
             this.chk14Ball.UseVisualStyleBackColor = true;
             this.chk14Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -356,7 +402,7 @@
             this.chk13Ball.Location = new System.Drawing.Point(476, 72);
             this.chk13Ball.Name = "chk13Ball";
             this.chk13Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk13Ball.TabIndex = 40;
+            this.chk13Ball.TabIndex = 12;
             this.chk13Ball.Tag = "13";
             this.chk13Ball.UseVisualStyleBackColor = true;
             this.chk13Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -369,7 +415,7 @@
             this.chk12Ball.Location = new System.Drawing.Point(438, 72);
             this.chk12Ball.Name = "chk12Ball";
             this.chk12Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk12Ball.TabIndex = 39;
+            this.chk12Ball.TabIndex = 11;
             this.chk12Ball.Tag = "12";
             this.chk12Ball.UseVisualStyleBackColor = true;
             this.chk12Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -382,7 +428,7 @@
             this.chk11Ball.Location = new System.Drawing.Point(399, 72);
             this.chk11Ball.Name = "chk11Ball";
             this.chk11Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk11Ball.TabIndex = 38;
+            this.chk11Ball.TabIndex = 10;
             this.chk11Ball.Tag = "11";
             this.chk11Ball.UseVisualStyleBackColor = true;
             this.chk11Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -395,7 +441,7 @@
             this.chk10Ball.Location = new System.Drawing.Point(361, 72);
             this.chk10Ball.Name = "chk10Ball";
             this.chk10Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk10Ball.TabIndex = 37;
+            this.chk10Ball.TabIndex = 9;
             this.chk10Ball.Tag = "10";
             this.chk10Ball.UseVisualStyleBackColor = true;
             this.chk10Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -408,7 +454,7 @@
             this.chk9Ball.Location = new System.Drawing.Point(323, 72);
             this.chk9Ball.Name = "chk9Ball";
             this.chk9Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk9Ball.TabIndex = 36;
+            this.chk9Ball.TabIndex = 8;
             this.chk9Ball.Tag = "9";
             this.chk9Ball.UseVisualStyleBackColor = true;
             this.chk9Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -421,7 +467,7 @@
             this.chk8Ball.Location = new System.Drawing.Point(285, 72);
             this.chk8Ball.Name = "chk8Ball";
             this.chk8Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk8Ball.TabIndex = 35;
+            this.chk8Ball.TabIndex = 7;
             this.chk8Ball.Tag = "8";
             this.chk8Ball.UseVisualStyleBackColor = true;
             this.chk8Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -434,7 +480,7 @@
             this.chk7Ball.Location = new System.Drawing.Point(247, 72);
             this.chk7Ball.Name = "chk7Ball";
             this.chk7Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk7Ball.TabIndex = 34;
+            this.chk7Ball.TabIndex = 6;
             this.chk7Ball.Tag = "7";
             this.chk7Ball.UseVisualStyleBackColor = true;
             this.chk7Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -447,7 +493,7 @@
             this.chk6Ball.Location = new System.Drawing.Point(209, 72);
             this.chk6Ball.Name = "chk6Ball";
             this.chk6Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk6Ball.TabIndex = 33;
+            this.chk6Ball.TabIndex = 5;
             this.chk6Ball.Tag = "6";
             this.chk6Ball.UseVisualStyleBackColor = true;
             this.chk6Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -460,7 +506,7 @@
             this.chk5Ball.Location = new System.Drawing.Point(170, 72);
             this.chk5Ball.Name = "chk5Ball";
             this.chk5Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk5Ball.TabIndex = 32;
+            this.chk5Ball.TabIndex = 4;
             this.chk5Ball.Tag = "5";
             this.chk5Ball.UseVisualStyleBackColor = true;
             this.chk5Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -473,7 +519,7 @@
             this.chk4Ball.Location = new System.Drawing.Point(132, 72);
             this.chk4Ball.Name = "chk4Ball";
             this.chk4Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk4Ball.TabIndex = 31;
+            this.chk4Ball.TabIndex = 3;
             this.chk4Ball.Tag = "4";
             this.chk4Ball.UseVisualStyleBackColor = true;
             this.chk4Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -486,7 +532,7 @@
             this.chk3Ball.Location = new System.Drawing.Point(94, 72);
             this.chk3Ball.Name = "chk3Ball";
             this.chk3Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk3Ball.TabIndex = 30;
+            this.chk3Ball.TabIndex = 2;
             this.chk3Ball.Tag = "3";
             this.chk3Ball.UseVisualStyleBackColor = true;
             this.chk3Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -499,7 +545,7 @@
             this.chk2Ball.Location = new System.Drawing.Point(56, 72);
             this.chk2Ball.Name = "chk2Ball";
             this.chk2Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk2Ball.TabIndex = 29;
+            this.chk2Ball.TabIndex = 1;
             this.chk2Ball.Tag = "2";
             this.chk2Ball.UseVisualStyleBackColor = true;
             this.chk2Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -512,7 +558,7 @@
             this.chk1Ball.Location = new System.Drawing.Point(18, 72);
             this.chk1Ball.Name = "chk1Ball";
             this.chk1Ball.Size = new System.Drawing.Size(15, 14);
-            this.chk1Ball.TabIndex = 28;
+            this.chk1Ball.TabIndex = 0;
             this.chk1Ball.Tag = "1";
             this.chk1Ball.UseVisualStyleBackColor = true;
             this.chk1Ball.CheckedChanged += new System.EventHandler(this.BallCheckedChanged);
@@ -522,7 +568,7 @@
             this.btnResetVisibility.Location = new System.Drawing.Point(9, 95);
             this.btnResetVisibility.Name = "btnResetVisibility";
             this.btnResetVisibility.Size = new System.Drawing.Size(566, 23);
-            this.btnResetVisibility.TabIndex = 27;
+            this.btnResetVisibility.TabIndex = 15;
             this.btnResetVisibility.Text = "Reset Visibility";
             this.btnResetVisibility.UseVisualStyleBackColor = true;
             this.btnResetVisibility.Click += new System.EventHandler(this.BtnResetVisibilityClick);
@@ -677,11 +723,35 @@
             this.pbx8Ball.TabIndex = 19;
             this.pbx8Ball.TabStop = false;
             // 
+            // rad8Ball
+            // 
+            this.rad8Ball.AutoSize = true;
+            this.rad8Ball.Location = new System.Drawing.Point(144, 12);
+            this.rad8Ball.Name = "rad8Ball";
+            this.rad8Ball.Size = new System.Drawing.Size(51, 17);
+            this.rad8Ball.TabIndex = 0;
+            this.rad8Ball.Text = "8-Ball";
+            this.rad8Ball.UseVisualStyleBackColor = true;
+            this.rad8Ball.CheckedChanged += new System.EventHandler(this.Rad8BallCheckedChanged);
+            // 
+            // rad9Ball
+            // 
+            this.rad9Ball.AutoSize = true;
+            this.rad9Ball.Location = new System.Drawing.Point(441, 12);
+            this.rad9Ball.Name = "rad9Ball";
+            this.rad9Ball.Size = new System.Drawing.Size(51, 17);
+            this.rad9Ball.TabIndex = 1;
+            this.rad9Ball.Text = "9-Ball";
+            this.rad9Ball.UseVisualStyleBackColor = true;
+            this.rad9Ball.CheckedChanged += new System.EventHandler(this.Rad9BallCheckedChanged);
+            // 
             // ApaScoreKeeperUi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 415);
+            this.ClientSize = new System.Drawing.Size(610, 435);
+            this.Controls.Add(this.rad9Ball);
+            this.Controls.Add(this.rad8Ball);
             this.Controls.Add(this.gbxBalls);
             this.Controls.Add(this.btnResetScores);
             this.Controls.Add(this.numUpDwnDeadBalls);
@@ -694,7 +764,7 @@
             this.Controls.Add(this.gbxPlayer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(626, 454);
+            this.MaximumSize = new System.Drawing.Size(626, 500);
             this.MinimumSize = new System.Drawing.Size(626, 454);
             this.Name = "ApaScoreKeeperUi";
             this.Text = "APA Score Keeper";
@@ -780,6 +850,12 @@
         private System.Windows.Forms.CheckBox chk5Ball;
         private System.Windows.Forms.CheckBox chk4Ball;
         private System.Windows.Forms.CheckBox chk3Ball;
+        private System.Windows.Forms.ComboBox cbxPlayer1SkillLevel;
+        private System.Windows.Forms.Label lblPlayer1SkillLevel;
+        private System.Windows.Forms.ComboBox cbxPlayer2SkillLevel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rad8Ball;
+        private System.Windows.Forms.RadioButton rad9Ball;
     }
 }
 
