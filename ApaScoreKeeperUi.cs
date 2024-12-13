@@ -39,7 +39,6 @@ namespace ApaScoreKeeper
         {
             InitFiles();
             LoadFiles();
-            ResetScores();
 
             poolBalls.Add(pbx1Ball);
             poolBalls.Add(pbx2Ball);
@@ -242,6 +241,12 @@ namespace ApaScoreKeeper
                 }
             }
 
+            if (File.Exists(Constants.PLAYER_1_SCORE))
+            {
+                using (StreamReader reader = new StreamReader(Constants.PLAYER_1_SCORE))
+                    numUpDwnPlayer1Score.Value = Convert.ToInt32(reader.ReadLine());
+            }
+
             if (File.Exists(Constants.PLAYER_2_NAME))
             {
                 using (StreamReader reader = new StreamReader(Constants.PLAYER_2_NAME))
@@ -257,10 +262,28 @@ namespace ApaScoreKeeper
                 }
             }
 
+            if (File.Exists(Constants.PLAYER_2_SCORE))
+            {
+                using (StreamReader reader = new StreamReader(Constants.PLAYER_2_SCORE))
+                    numUpDwnPlayer2Score.Value = Convert.ToInt32(reader.ReadLine());
+            }
+
             if (File.Exists(Constants.RACE))
             {
                 using (StreamReader reader = new StreamReader(Constants.RACE))
                     txtRace.Text = reader.ReadLine();
+            }
+
+            if (File.Exists(Constants.INNINGS))
+            {
+                using (StreamReader reader = new StreamReader(Constants.INNINGS))
+                    numUpDwnInnings.Value = Convert.ToInt32(reader.ReadLine());
+            }
+
+            if (File.Exists(Constants.DEAD_BALLS))
+            {
+                using (StreamReader reader = new StreamReader(Constants.DEAD_BALLS))
+                    numUpDwnDeadBalls.Value = Convert.ToInt32(reader.ReadLine());
             }
             loadingFiles = false;
         }
