@@ -749,7 +749,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 435);
+            this.ClientSize = new System.Drawing.Size(610, 436);
             this.Controls.Add(this.rad9Ball);
             this.Controls.Add(this.rad8Ball);
             this.Controls.Add(this.gbxBalls);
@@ -764,10 +764,11 @@
             this.Controls.Add(this.gbxPlayer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(626, 500);
-            this.MinimumSize = new System.Drawing.Size(626, 454);
+            this.MaximumSize = new System.Drawing.Size(626, 475);
+            this.MinimumSize = new System.Drawing.Size(626, 475);
             this.Name = "ApaScoreKeeperUi";
             this.Text = "APA Score Keeper";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ApaScoreKeeperUiFormClosing);
             this.Load += new System.EventHandler(this.ApaScoreKeeperUiLoad);
             this.gbxPlayer1.ResumeLayout(false);
             this.gbxPlayer1.PerformLayout();
